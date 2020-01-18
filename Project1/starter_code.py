@@ -125,6 +125,7 @@ def TrainTestModel(model, X_train, y_train, X_test, y_test, name, show_log_loss=
     print()
 
     plot_roc_curve(model, X_test, y_test)
+    plt.title(name + " ROC Curve")
     plt.show()
 
 def CrossValSVM(X_train, y_train, X_test, y_test):
@@ -173,13 +174,13 @@ def CrossValLogisticRegression(X_train, y_train, X_test, y_test):
         TrainTestModel(model, X_train, y_train, X_test, y_test, penalty + " Regularized Logistic Regression", show_log_loss=True)
 
 X_train, X_test, y_train, y_test = GetData()
-# hard_svm = LinearSVC(C=1000.0, max_iter=5000)
-# TrainTestModel(hard_svm, X_train, y_train, X_test, y_test, "Hard SVM")
+hard_svm = LinearSVC(C=1000.0, max_iter=5000)
+TrainTestModel(hard_svm, X_train, y_train, X_test, y_test, "Hard SVM")
 
-# soft_svm = LinearSVC(C=0.0001)
-# TrainTestModel(soft_svm, X_train, y_train, X_test, y_test, "Soft SVM")
+soft_svm = LinearSVC(C=0.0001)
+TrainTestModel(soft_svm, X_train, y_train, X_test, y_test, "Soft SVM")
 
-# CrossValSVM(X_train, y_train, X_test, y_test)
+CrossValSVM(X_train, y_train, X_test, y_test)
 
 no_reg_model = LogisticRegression(penalty='none')
 TrainTestModel(no_reg_model, X_train, y_train, X_test, y_test, "No Regularization Logistic Regression")
