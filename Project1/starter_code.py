@@ -173,6 +173,8 @@ def CrossValLogisticRegression(X_train, y_train, X_test, y_test):
         model = LogisticRegression(penalty=penalty, C=10**max_k, solver='liblinear')
         TrainTestModel(model, X_train, y_train, X_test, y_test, penalty + " Regularized Logistic Regression", show_log_loss=True)
 
+Q1()
+
 X_train, X_test, y_train, y_test = GetData()
 hard_svm = LinearSVC(C=1000.0, max_iter=5000)
 TrainTestModel(hard_svm, X_train, y_train, X_test, y_test, "Hard SVM")
